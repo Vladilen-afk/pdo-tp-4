@@ -29,9 +29,6 @@
         $("#btnSuppr").attr("href",lien); 
         $(".modal-body").text(message); 
     });
-
-
-
 </script>
 </body>
 </html>

@@ -49,7 +49,7 @@ class Continent{
      */
     public static function findAll():array
     {
-        $req=MonPdo::getInstance()->prepare("SELECT * FROM continent");
+        $req=MonPdo::getInstance()->prepare("Select * from continent");
         $req->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'Continent');
         $req->execute();
         $lesResultats=$req->fetchAll();
@@ -64,7 +64,7 @@ class Continent{
      */
     public static function findById(int $id):Continent
     {
-        $req=MonPdo::getInstance()->prepare("SELECT * FROM continent WHERE num= :id");
+        $req=MonPdo::getInstance()->prepare("Select * from continent WHERE num= :id");
         $req->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,'Continent');
         $req->bindParam(':id',$id);
         $req->execute();
@@ -81,7 +81,7 @@ class Continent{
      */
     public static function addContinent(Continent $continent):int
     {
-        $req=MonPdo::getInstance()->prepare("INSERT INTO continent(libelle) VALUES(:libelle)");
+        $req=MonPdo::getInstance()->prepare("insert into continent(libelle) VALUES(:libelle)");
         $req->bindparam(':libelle',$continent->getLibelle());
         $nb=$req->execute();
         return $nb;
@@ -95,7 +95,7 @@ class Continent{
      */
     public static function uptdate(Continent $continent):int
     {
-        $req=MonPdo::getInstance()->prepare("UPDATE continent SET libelle=:libelle WHERE num=:id");
+        $req=MonPdo::getInstance()->prepare("update continent set libelle=:libelle WHERE num=:id");
         $req->bindparam(':libelle',$continent->getLibelle());
         $req->bindparam(':id',$continent->getNum());
         $nb=$req->execute();
@@ -111,7 +111,7 @@ class Continent{
      */
     public static function delete(Continent $continent):int
     {
-        $req=MonPdo::getInstance()->prepare("DELETE FROM continent WHERE num=:id");
+        $req=MonPdo::getInstance()->prepare("delet from continent WHERE num=:id");
         $req->bindparam(':id',$continent->getNum());
         $nb=$req->execute();
         return $nb;
